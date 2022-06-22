@@ -1,0 +1,17 @@
+{
+  "name": "mtg-keras-training-model-builder",
+  "version": "0.0.1",
+  "description": "build keras training model for mtg cards",
+  "main": "builder.js",
+  "dependencies": {
+    "ajax-wrapper": "0.0.29",
+    "axios": "^0.27.2",
+    "ky": "^0.30.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zac Ingoglia",
+  "license": "ISC"
+}
