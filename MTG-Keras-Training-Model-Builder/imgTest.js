@@ -14,36 +14,36 @@ const uniqueCardArtPics = async () => {
   //    i.e. cards that have or don't have a png img
   let goodCount = 0;
   let badCount = 0;
+  let testCount = 0;
 
   // Get event stream from the provided file path
   getCardStream("./bulk_data/all-cards.json").pipe(
     es.map(async (card) => {
       // Make sure our card format is valid
-      if (card && card.image_uris && card.image_uris.png) {
-        // Make sure that the image is in a format that we can accept
-        if (
-          card.image_status === "highres_scan" ||
-          card.image_status === "lowres"
-        ) {
-          // Get the download url of the image of the card that we want
-          const imgUrl = card.image_uris.png;
+      if (card && card.image_uris) {
+        // Get the download url of the image of the card that we want
+        // const imgUrl = card.image_uris.png;
 
-          try {
-            // Download our card image
-            const cardImg = await axios.get(`${imgUrl}`, {
-              responseType: "arraybuffer",
-            });
-            // Write the data from the image download to a new file
-            fs.writeFileSync(`./images/${card.id}.png`, cardImg.data);
-            console.info(
-              `Wrote: '${card.name}' (${card.id}) to disk. - Good: ${goodCount}, Bad: ${badCount}`
-            );
-            goodCount = goodCount + 1;
-          } catch (err) {
-            // console.log(`Invalid Card`);
-            badCount = badCount + 1;
-          }
+        if (card.id === "02046363-58d4-49e0-9e02-8a0f127f052f") {
+          console.log(card);
         }
+        testCount = testCount + 1;
+
+        // try {
+        //   // Download our card image
+        //   const cardImg = await axios.get(`${imgUrl}`, {
+        //     responseType: "arraybuffer",
+        //   });
+        //   // Write the data from the image download to a new file
+        //   fs.writeFileSync(`./images/${card.id}.png`, cardImg.data);
+        //   console.info(
+        //     `Wrote: '${card.name}' (${card.id}) to disk. - Good: ${goodCount}, Bad: ${badCount}`
+        //   );
+        //   goodCount = goodCount + 1;
+        // } catch (err) {
+        //   // console.log(`Invalid Card`);
+        //   badCount = badCount + 1;
+        // }
       }
     })
   );
