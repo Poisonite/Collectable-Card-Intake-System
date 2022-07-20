@@ -1,1 +1,73 @@
-<ion-content [fullscreen]="true"> Works </ion-content>
+<ion-content [fullscreen]="true">
+  <!-- Logged Out -->
+  <ion-grid *ngIf="!isAuth">
+    <ion-row>
+      <ion-col size="12">
+        <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+          <ion-item>
+            <ion-label position="floating">
+              E-Mail
+              <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input required formControlName="email" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">
+              Password
+              <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input required formControlName="password" type="text">
+            </ion-input>
+          </ion-item>
+          <br />
+          <ion-button
+            (click)="signIn()"
+            expand="block"
+            fill="outline"
+            shape="round"
+            color="primary"
+            type="submit"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Logged In -->
+  <ion-grid *ngIf="isAuth">
+    <ion-row>
+      <ion-col size="12">
+        <ion-button
+          [routerLink]="['/add-card']"
+          expand="block"
+          fill="outline"
+          shape="round"
+          color="primary"
+        >
+          Add Cards
+        </ion-button>
+        <ion-button
+          [routerLink]="['/stats-dashboard']"
+          expand="block"
+          fill="outline"
+          shape="round"
+          color="primary"
+        >
+          View Inventory Stats
+        </ion-button>
+        <ion-button
+          [routerLink]="['/manage-users']"
+          expand="block"
+          fill="outline"
+          shape="round"
+          color="primary"
+        >
+          Manage Users
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
