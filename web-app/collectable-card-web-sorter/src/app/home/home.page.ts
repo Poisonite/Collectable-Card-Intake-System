@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
   loginForm: FormGroup;
   constructor(private formBuilder: FormBuilder) {}
 
+  // Uncomment these 3 lines when building real auth
   signIn() {
     // const email = this.loginForm.controls.email.value;
     // const password = this.loginForm.controls.password.value;
@@ -31,8 +32,9 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit(): void {
-    // Form config and validation for the Add User Form
+    // Form config and validation for the login form
     this.loginForm = this.formBuilder.group({
+      // Clear dummy values from form when building real auth
       email: new FormControl('test@email.com', [
         Validators.required,
         Validators.email,
