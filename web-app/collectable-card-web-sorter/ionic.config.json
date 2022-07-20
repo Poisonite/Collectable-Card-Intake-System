@@ -1,0 +1,7 @@
+{
+  "name": "collectable-card-web-sorter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
