@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>add-card</ion-title>
+    <ion-title>Upload New Inventory</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <form [formGroup]="findCardForm" (ngSubmit)="submitCardSearch()">
+          <!-- <ion-searchbar placeholder="Filter Pizza" inputmode="decimal" type="decimal" (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="always"></ion-searchbar> -->
+          <ion-item>
+            <ion-label position="floating">Search For Card</ion-label>
+            <ion-input
+              required
+              formControlName="searchBar"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <br />
+          <ion-button
+            expand="block"
+            fill="outline"
+            shape="round"
+            color="primary"
+            type="submit"
+            [disabled]="findCardForm.invalid"
+          >
+            Find Card
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
